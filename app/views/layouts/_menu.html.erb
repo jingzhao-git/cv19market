@@ -23,24 +23,24 @@
           <% end %>
           <input type="text" name="w" value="<%= params[:w] %>" class="form-control search-input" placeholder="<%= @category ? "在 #{@category.title} 下搜索.." : '搜索整站商品..' %>">
         </div>
-        <button type="submit" class="btn btn-default">搜索</button>
+        <button type="submit" class="btn btn-default">search</button>
       <% end %>
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "购物车(#{@shopping_cart_count})", shopping_carts_path %></li>
+        <li><%= link_to "cart(#{@shopping_cart_count})", shopping_carts_path %></li>
         <% unless logged_in? %>
-          <li><a href="<%= new_user_path %>">注册</a></li>
-          <li><a href="<%= new_session_path %>">登录</a></li>
+          <li><a href="<%= new_user_path %>">register</a></li>
+          <li><a href="<%= new_session_path %>">login</a></li>
         <% else %>
-          <li><a href="#">欢迎你, <%= current_user.username %></a></li>
-          <li><%= link_to "退出", logout_path, method: :delete %></li>
+          <li><a href="#">Welcome, <%= current_user.username %></a></li>
+          <li><%= link_to "exit", logout_path, method: :delete %></li>
         <% end -%>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">个人中心 <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="<%= dashboard_orders_path %>">我的订单</a></li>
-            <li><a href="<%= dashboard_addresses_path %>">我的收货地址</a></li>
+            <li><a href="<%= dashboard_orders_path %>">myorders</a></li>
+            <li><a href="<%= dashboard_addresses_path %>">my_ship_address</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="<%= dashboard_password_path %>">个人信息</a></li>
+            <li><a href="<%= dashboard_password_path %>">mydetails</a></li>
           </ul>
         </li>
       </ul>

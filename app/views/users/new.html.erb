@@ -20,7 +20,7 @@
     </div>
   </div>
   <div class="form-group cellphone-inner <%= @is_using_email ? 'hide' : '' %>">
-    <label class="col-sm-2 control-label">手机号 *</label>
+    <label class="col-sm-2 control-label">mobile *</label>
     <div class="col-sm-4">
       <%= f.text_field :cellphone, class: "form-control", disabled: @is_using_email %>
       <%= link_to "Use email", 'javascript:;', class: 'switch-btn' %>
