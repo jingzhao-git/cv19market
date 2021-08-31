@@ -1,5 +1,5 @@
 <div class="pull-right">
-  <%= link_to "添加收货地址", new_address_path, class: "btn btn-info btn-xs new-address-btn" %>
+  <%= link_to "Add shipping address", new_address_path, class: "btn btn-info btn-xs new-address-btn" %>
 </div>
 <div class="clearfix"></div>
 <br />
@@ -13,19 +13,19 @@
           <%= address.address %>
           <%= address.cellphone %>
 
-          <%= link_to "编辑", edit_address_path(address), remote: true, class: "inline edit-address-btn" %>
-          <%= link_to "删除", address_path(address), remote: true, method: 'delete', "data-confirm": "确认删除该地址吗？", class: "remove-address-btn inline" %>
+          <%= link_to "edit", edit_address_path(address), remote: true, class: "inline edit-address-btn" %>
+          <%= link_to "delete", address_path(address), remote: true, method: 'delete', "data-confirm": "Are you sure to delete this address?", class: "remove-address-btn inline" %>
           <% if current_user.default_address == address %>
-            <span class="default_address">默认地址</span>
+            <span class="default_address">default address</span>
           <% else %>
-            <%= link_to "设为默认收货地址", set_default_address_address_path(address), remote: true, method: 'put', class: "set-default-address-btn inline" %>
+            <%= link_to "Set as default shipping address", set_default_address_address_path(address), remote: true, method: 'put', class: "set-default-address-btn inline" %>
           <% end %>
         </label>
       </li>
     <% end %>
   <% else %>
     <li class="list-group-item">
-      请添加送货地址
+      Please add shipping address
     </li>
   <% end %>
 </ul>

@@ -1,6 +1,6 @@
 <div>
   <div class="pull-right">
-    <%= link_to "新建分类", new_admin_category_path, class: "btn btn-primary" %>
+    <%= link_to "Newcategory", new_admin_category_path, class: "btn btn-primary" %>
   </div>
 
   <h1>
@@ -27,10 +27,10 @@
         <td><%= category.title %></td>
         <td><%= category.weight %></td>
         <td align="right">
-          <%= link_to "编辑", edit_admin_category_path(category) %> 
-          <%= link_to "删除", admin_category_path(category), method: :delete, 'data-confirm': "确认删除吗?" %>
+          <%= link_to "edit", edit_admin_category_path(category) %> 
+          <%= link_to "delete", admin_category_path(category), method: :delete, 'data-confirm': "Confirm delete?" %>
           <% if category.root? %>
-            <%= link_to "查看子分类", admin_categories_path(id: category) %>
+            <%= link_to "View sub-categories", admin_categories_path(id: category) %>
           <% end -%>
         </td>
       </tr>

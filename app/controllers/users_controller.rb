@@ -14,7 +14,7 @@ class UsersController < ApplicationController
     update_browser_uuid @user.uuid
 
     if @user.save
-      flash[:notice] = "注册成功，请登录"
+      flash[:notice] = "successfully registered, login please"
       redirect_to new_session_path
     else
       render action: :new

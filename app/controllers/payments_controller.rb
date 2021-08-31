@@ -41,7 +41,7 @@ class PaymentsController < ApplicationController
   end
 
   def do_payment
-    unless @payment.is_success? # 避免同步通知和异步通知多次调用
+    unless @payment.is_success? # Avoid multiple calls to synchronous and asynchronous notifications
       if is_payment_success?
         @payment.do_success_payment! params
         redirect_to success_payments_path
@@ -72,10 +72,10 @@ class PaymentsController < ApplicationController
     unless @payment
       if is_payment_success?
         # TODO
-        render text: "未找到支付单号，但是支付已经成功"
+        render text: "The payment order number was not found, but the payment has been successful"
         return
       else
-        render text: "未找到您的订单号，同时您的支付没有成功，请返回重新支付"
+        render text: "Your order number was not found, and your payment was unsuccessful, please go back and pay again"
         return
       end
     end
@@ -96,9 +96,9 @@ class PaymentsController < ApplicationController
       "anti_phishing_key" => "",
       "exter_invoke_ip" => "",
       "out_trade_no" => payment.payment_no,
-      "subject" => "sale_center商品购买",
+      "subject" => "sale_centergoodbuy",
       "total_fee" => payment.total_money,
-      "body" => "sale_center商品购买",
+      "body" => "sale_centergoodbuy",
       "_input_charset" => "utf-8",
       "sign_type" => 'MD5',
       "sign" => ""
@@ -145,7 +145,7 @@ class PaymentsController < ApplicationController
     end
   end
 
-  # RSA 签名
+  # RSA 
   def build_rsa_sign(data)
     private_key_path = Rails.root.to_s + "/config/.alipay_self_private"
     pri = OpenSSL::PKey::RSA.new(File.read(private_key_path))
@@ -154,7 +154,7 @@ class PaymentsController < ApplicationController
     signature
   end
 
-  # RSA 验证
+  # RSA verify
   def build_rsa_verify?(data, sign)
     public_key_path = Rails.root.to_s + "/config/.alipay_public"
     pub = OpenSSL::PKey::RSA.new(File.read(public_key_path))

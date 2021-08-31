@@ -2,9 +2,9 @@ class Address < ApplicationRecord
 
   validates :user_id, presence: true
   validates :address_type, presence: true
-  validates :contact_name, presence: { message: "收货人不能为空" }
-  validates :cellphone, presence: { message: "手机号不能为空" }
-  validates :address, presence: { message: "地址不能为空" }
+  validates :contact_name, presence: { message: "Consignee cannot be empty" }
+  validates :cellphone, presence: { message: "Mobile cannot be empty" }
+  validates :address, presence: { message: "Address cannot be empty" }
 
   belongs_to :user
 

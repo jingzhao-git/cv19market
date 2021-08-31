@@ -21,17 +21,17 @@
     </div>
 
     <ul class="list-unstyled">
-      <li>商品编号: <%= @product.uuid %></li>
-      <li>库存: <%= @product.amount %></li>
+      <li>product_number</li>: <%= @product.uuid %></li>
+      <li>inventory: <%= @product.amount %></li>
     </ul>
     <h3><strong>¥<%= @product.price %></strong> <span class="msrp">¥<%= @product.msrp %></span></h3>
-    <p>数量: <input type="text" name="amount" value="1" /></p>
+    <p>amount: <input type="text" name="amount" value="1" /></p>
     <p><%= show_add_to_cart @product %></p>
 
     <br />
     <br />
     <ul class="nav nav-tabs">
-      <li role="presentation" class="active"><a href="javascript:;">商品描述</a></li>
+      <li role="presentation" class="active"><a href="javascript:;">description</a></li>
     </ul>
     <br />
     <div>

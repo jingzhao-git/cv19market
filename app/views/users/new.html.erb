@@ -1,4 +1,4 @@
-<h1>注册</h1>
+<h1>register</h1>
 <% unless @user.errors.empty? %>
   <div class="alert alert-danger">
     <ul>
@@ -13,41 +13,41 @@
 
 <%= form_for :user, url: users_path, method: :post, html: { class: 'form-horizontal', id: "user_form"} do |f| %>
   <div class="form-group email-inner <%= @is_using_email ? '' : 'hide' %>">
-    <label class="col-sm-2 control-label">邮箱 *</label>
+    <label class="col-sm-2 control-label">email *</label>
     <div class="col-sm-10">
       <%= f.text_field :email, class: "form-control", disabled: !@is_using_email %>
-      <%= link_to "使用手机号", 'javascript:;', class: "switch-btn" %>
+      <%= link_to "Use mobile phone number", 'javascript:;', class: "switch-btn" %>
     </div>
   </div>
   <div class="form-group cellphone-inner <%= @is_using_email ? 'hide' : '' %>">
     <label class="col-sm-2 control-label">手机号 *</label>
     <div class="col-sm-4">
       <%= f.text_field :cellphone, class: "form-control", disabled: @is_using_email %>
-      <%= link_to "使用邮箱", 'javascript:;', class: 'switch-btn' %>
+      <%= link_to "Use email", 'javascript:;', class: 'switch-btn' %>
     </div>
     <div class="col-sm-4">
-      <%= f.text_field :token, class: "form-control", placeholder: "手机验证码" %>
+      <%= f.text_field :token, class: "form-control", placeholder: "Phone verification code" %>
     </div>
     <div class="col-sm-2">
-      <input type="button" value="获取验证码" class="btn btn-warning fetch-token-btn" data-url="<%= cellphone_tokens_path %>" />
+      <input type="button" value="get verification code" class="btn btn-warning fetch-token-btn" data-url="<%= cellphone_tokens_path %>" />
     </div>
   </div>
 
   <div class="form-group">
-    <label class="col-sm-2 control-label">密码 *</label>
+    <label class="col-sm-2 control-label">password *</label>
     <div class="col-sm-10">
       <%= f.password_field :password, class: "form-control" %>
     </div>
   </div>
   <div class="form-group">
-    <label class="col-sm-2 control-label">密码确认 *</label>
+    <label class="col-sm-2 control-label">confirm_password *</label>
     <div class="col-sm-10">
       <%= f.password_field :password_confirmation, class: "form-control" %>
     </div>
   </div>
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
-      <input type="submit" name="create_user_submit" value="创建账户" class="btn btn-primary">
+      <input type="submit" name="create_user_submit" value="create_user" class="btn btn-primary">
     </div>
   </div>
 <% end -%>
@@ -68,7 +68,7 @@
         }
       })
 
-      // 验证码
+      // token
       var CELLPHONE_RE = /^(\+86|86)?1\d{10}$/;
       var token_wait = 60,
         token_interval,
@@ -82,12 +82,12 @@
           data: {cellphone: cellphone},
           beforeSend: function () {
             if (!CELLPHONE_RE.test(cellphone)) {
-              alert("手机号码格式错误!");
+              alert("Wrong format of phone number!");
               return false;
             }
 
             $this.data('old-value', $this.attr('value'));
-            $this.attr('value', "发送中...").prop('disabled', true);
+            $this.attr('value', "sending...").prop('disabled', true);
           },
           success: function (data) {
             if (data.status == 'error') {
@@ -109,10 +109,10 @@
         token_wait--;
         if (token_wait <= 0) {
           clearInterval(token_interval);
-          $token_btn.attr('value', '获取短信验证码').prop('disabled', false);
+          $token_btn.attr('value', 'obtain SMS verification code').prop('disabled', false);
           token_wait = 60;
         } else {
-          $token_btn.attr('value', '重新发送 ' + token_wait + ' 秒').prop('disabled', true);
+          $token_btn.attr('value', 'resend ' + token_wait + ' s').prop('disabled', true);
         }
       })
 

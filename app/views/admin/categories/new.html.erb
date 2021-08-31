@@ -1,5 +1,5 @@
 <div>
-  <h1><%= @category.new_record? ? "新建分类" : "修改分类 ##{params[:id]}" %></h1>
+  <h1><%= @category.new_record? ? "Newcategory" : "modifycategory ##{params[:id]}" %></h1>
 </div>
 
 <div class="form-body">
@@ -19,7 +19,7 @@
     <% end -%>
 
     <div class="form-group">
-      <label for="ancestry" class="col-sm-2 control-label">所属分类:</label>
+      <label for="ancestry" class="col-sm-2 control-label">category:</label>
       <div class="col-sm-5">
         <select name="category[ancestry]">
           <option></option>
@@ -28,24 +28,24 @@
             <option value="<%= category.id %>" <%= @category.ancestry == category.id.to_s ? 'selected' : '' %>><%= category.title %></option>
           <% end -%>
         </select>
-        为空为一级分类
+        Empty for the first level classification
       </div>
     </div>
     <div class="form-group">
-      <label for="title" class="col-sm-2 control-label">名称:*</label>
+      <label for="title" class="col-sm-2 control-label">title:*</label>
       <div class="col-sm-5">
         <%= f.text_field :title, class: "form-control" %>
       </div>
     </div>
     <div class="form-group">
-      <label for="weight" class="col-sm-2 control-label">权重:</label>
+      <label for="weight" class="col-sm-2 control-label">Weights:</label>
       <div class="col-sm-5">
-        <%= f.text_field :weight, class: "form-control" %> 数值越大越靠前
+        <%= f.text_field :weight, class: "form-control" %> The larger the value, the higher the front
       </div>
     </div>
     <div class="form-group">
       <div class="col-sm-offset-2 col-sm-8">
-        <%= f.submit (@category.new_record? ? "新建分类" : "编辑分类"), class: "btn btn-default" %>
+        <%= f.submit (@category.new_record? ? "Newcategory" : "modifycategory"), class: "btn btn-default" %>
       </div>
     </div>
   <% end -%>

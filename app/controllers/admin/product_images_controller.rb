@@ -17,9 +17,9 @@ class Admin::ProductImagesController < Admin::BaseController
   def destroy
     @product_image = @product.product_images.find(params[:id])
     if @product_image.destroy
-      flash[:notice] = "删除成功"
+      flash[:notice] = "successfully deleted"
     else
-      flash[:notice] = "删除失败"
+      flash[:notice] = "failed to delete"
     end
 
     redirect_to :back
@@ -29,9 +29,9 @@ class Admin::ProductImagesController < Admin::BaseController
     @product_image = @product.product_images.find(params[:id])
     @product_image.weight = params[:weight]
     if @product_image.save
-      flash[:notice] = "修改成功"
+      flash[:notice] = "successfully modified"
     else
-      flash[:notice] = "修改失败"
+      flash[:notice] = "fail to edit"
     end
 
     redirect_to :back

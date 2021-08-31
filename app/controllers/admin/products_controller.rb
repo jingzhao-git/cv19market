@@ -17,7 +17,7 @@ class Admin::ProductsController < Admin::BaseController
     @root_categories = Category.roots
 
     if @product.save
-      flash[:notice] = "创建成功"
+      flash[:notice] = "created successfully"
       redirect_to admin_products_path
     else
       render action: :new
@@ -33,7 +33,7 @@ class Admin::ProductsController < Admin::BaseController
     @product.attributes = params.require(:product).permit!
     @root_categories = Category.roots
     if @product.save
-      flash[:notice] = "修改成功"
+      flash[:notice] = "successfully modified"
       redirect_to admin_products_path
     else
       render action: :new
@@ -42,10 +42,10 @@ class Admin::ProductsController < Admin::BaseController
 
   def destroy
     if @product.destroy
-      flash[:notice] = "删除成功"
+      flash[:notice] = "successfully deleted"
       redirect_to admin_products_path
     else
-      flash[:notice] = "删除失败"
+      flash[:notice] = "failed to delete"
       redirect_to :back
     end
   end
