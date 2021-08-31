@@ -21,7 +21,7 @@
           <% if @category %>
             <input type="hidden" name="category_id" value="<%= @category.id %>" />
           <% end %>
-          <input type="text" name="w" value="<%= params[:w] %>" class="form-control search-input" placeholder="<%= @category ? "在 #{@category.title} 下搜索.." : '搜索整站商品..' %>">
+          <input type="text" name="w" value="<%= params[:w] %>" class="form-control search-input" placeholder="<%= @category ? " #{@category.title} search.." : 'search fron the site..' %>">
         </div>
         <button type="submit" class="btn btn-default">search</button>
       <% end %>
@@ -35,7 +35,7 @@
           <li><%= link_to "exit", logout_path, method: :delete %></li>
         <% end -%>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">个人中心 <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">settings <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="<%= dashboard_orders_path %>">myorders</a></li>
             <li><a href="<%= dashboard_addresses_path %>">my_ship_address</a></li>
