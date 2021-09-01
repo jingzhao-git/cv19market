@@ -35,12 +35,12 @@
           <li><%= link_to "exit", logout_path, method: :delete %></li>
         <% end -%>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">settings <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">self profile</a> <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="<%= dashboard_orders_path %>">myorders</a></li>
-            <li><a href="<%= dashboard_addresses_path %>">my_ship_address</a></li>
+            <li><a href="<%= dashboard_orders_path %>">my orders</a></li>
+            <li><a href="<%= dashboard_addresses_path %>">my ship address</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="<%= dashboard_password_path %>">mydetails</a></li>
+            <li><a href="<%= dashboard_password_path %>">my details</a></li>
           </ul>
         </li>
       </ul>
